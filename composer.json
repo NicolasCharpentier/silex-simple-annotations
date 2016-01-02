@@ -1,0 +1,22 @@
+{
+    "name": "nicolascharpentier/silex-simple-annotations",
+    "description": "Provide annotations for silex",
+    "require": {
+        "php": ">= 5.3"
+    },
+    "require-dev": {
+        "php": ">= 5.3"
+    },
+    "authors": [
+        {
+            "name": "Nicolas Charpenter",
+            "email": "nicolas.charpentier@gmail78.com"
+        }
+    ],
+    "autoload": {
+      "psr-0": {
+        "": "src"
+      }
+    }
+
+}
