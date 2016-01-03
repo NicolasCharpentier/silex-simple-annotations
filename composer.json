@@ -1,6 +1,7 @@
 {
     "name": "nicolascharpentier/silex-simple-annotations",
     "description": "Provide annotations for silex",
+    "license": "MIT",
     "require": {
         "php": ">= 5.3"
     },
