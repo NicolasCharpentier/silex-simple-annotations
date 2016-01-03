@@ -105,7 +105,7 @@ Why not?
 
 Any sort of feedback is strongly encouraged and will be listened.
 
-Also feel free to contribute
+Also feel free to contribute or just ask for change, even the smallest
 
 
 > "No more controller provider needed. Got my wife back. Love this" - George, Alabama.
