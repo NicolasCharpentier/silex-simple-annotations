@@ -20,6 +20,26 @@ Prepand your controller function with annotations, we will deal with the rest.
 
 This examples links a `POST` on `baseUrl/SomeControllerPrefixRouteYouGave/login` to the `loginRegisterAction` action
 
+## Why should I use this provider ?
+
+Currently there are 2 cools providers Google gave me
+
+https://github.com/danadesrosiers/silex-annotation-provider
+
+https://github.com/dcousineau/orlex
+
+They both use Doctrine\Annotations to parse Annots and seem to work.
+
+So why?
+* You hate Doctrine (strange)
+* You want a simple syntax
+* You are lazy and just want to provide your /src for controllers
+* You may need an automatic documentation. *This will come in the futur*
+
+Why not?
+* These other providers are probably faster for parsing
+* Im french
+
 ## What can i do ? Is this FREE ? 
 
 ### Registering
@@ -90,31 +110,10 @@ class UserController {
 **Controller Level**
 * *REQUIRED*  **Prefix** : Set the route prefix for every actions, also will be used for the default binding value. 
 
-// TODO : Continuer 
 **Actions Level**
 * *REQUIRED*  **Route** : Set the Route suffix
 * *OPTIONAL*  **Method** : Sets the Route Method. Default to GET
 * *OPTIONAL*  **Bind** : Sets the Route binding. Default to ctrlPrefix + actionName
-
-## Why should I use this provider ?
-
-Currently there are 2 cools providers Google gave me
-
-https://github.com/danadesrosiers/silex-annotation-provider
-
-https://github.com/dcousineau/orlex
-
-They both use Doctrine\Annotations to parse Annots and seem to work.
-
-So why?
-* You hate Doctrine (strange)
-* You want a simple syntax
-* You are lazy and just want to provide your /src for controllers
-* You may need an automatic documentation. *This will come in the futur*
-
-Why not?
-* These other providers are probably faster for parsing
-* Im french
 
 ## TODOS
 - Get why the ordered list on this README just displays '1' at every step.
