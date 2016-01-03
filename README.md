@@ -34,11 +34,11 @@ So why?
 * You hate Doctrine (strange)
 * You want a simple syntax
 * You are lazy and just want to provide your /src for controllers
-* You may need an automatic documentation. *This will come in the futur*
+* You may need an automatic documentation. *This will come in the future*
 
 Why not?
 * These other providers are probably faster for parsing
-* Im french
+* I'm french
 
 ## What can i do ? Is this FREE ? 
 
