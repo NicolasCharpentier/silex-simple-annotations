@@ -1,5 +1,5 @@
 {
-    "name": "nc/silex-simple-annotations",
+    "name": "nicolascharpentier/silex-simple-annotations",
     "description": "Provide annotations for silex",
     "require": {
         "php": ">= 5.3"
