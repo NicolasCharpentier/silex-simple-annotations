@@ -2,7 +2,6 @@
 
 namespace SilexSimpleAnnotations\AbstractAnnotations;
 
-
 use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Method extends AbstractAnnotation{
@@ -16,12 +15,36 @@ class Method extends AbstractAnnotation{
 
     public function isValidValue($val)
     {
-        return array_search(strtoupper($val), [
-            'GET', 'POST', 'PUT', 'DELETE'
-        ]) !== false;
+        $val = strtoupper($val);
+        $methodCount = 0;
+
+        $this->loopInAvailableOptions(function ($method, &$methodCount) use ($val) {
+            if (strpos($val, $method) !== false)
+                $methodCount++;
+        }, $methodCount);
+
+        return !! $methodCount;
     }
 
     static public function forUsage($val) {
-        return strtolower($val);
+        $val = strtoupper($val);
+        $methods = '';
+
+        self::loopInAvailableOptions(function ($method, &$methods) use ($val) {
+            if (strpos($val, $method) !== false)
+                $methods = strlen($methods) ? $methods . '|' . $method : $method;
+        }, $methods);
+
+        return $methods;
+    }
+
+    static private function loopInAvailableOptions($callback, &$customFlag)
+    {
+        foreach (['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] as $method) {
+            if ($callback($method, $customFlag) === false)
+                return true;
+        }
+
+        return true;
     }
 }

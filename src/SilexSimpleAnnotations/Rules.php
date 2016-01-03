@@ -66,12 +66,16 @@ class Rules {
 
             /** @var Controller $routeFactored */
             $routeFactored = $ctrlsFactory
-                ->$method($route, $ctrlAccessPath . $action)
-                ->bind($binded);
+                ->match($route, $ctrlAccessPath . $action)
+                ->bind($binded)
+                ->method($method)
+            ;
 
-            // TODO : Virer et proposer le assert en annot
-            if (strpos($route, '{id}') !== false)
-                $routeFactored->assert('id', "\d+");
+            // TODO : proposer le assert en annot
+            //if (strpos($route, '{id}') !== false)
+            //    $routeFactored->assert('id', "\d+");
+
+
         }
     }
 
