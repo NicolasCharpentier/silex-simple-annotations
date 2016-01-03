@@ -81,11 +81,32 @@ class UserController {
 * *OPTIONAL*  **Method**
 * *OPTIONAL*  **Bind**
 
+## Why should I use this provider ?
 
+Currently there are 2 cools providers Google gave me
 
-## Feedback
+https://github.com/danadesrosiers/silex-annotation-provider
 
-Any sort of feedback is strongly encouraged and will be listened with love.
+https://github.com/dcousineau/orlex
+
+They both use Doctrine\Annotations to parse Annots and seem to work.
+
+So why?
+* You hate Doctrine (strange)
+* You want a simple syntax
+* You are lazy and just want to provide your /src for controllers
+* You may need an automatic documentation. *This will come in the futur*
+
+Why not?
+* These other providers are probably faster for parsing
+* Im french
+
+## Feedback & Contribution
+
+Any sort of feedback is strongly encouraged and will be listened.
+
+Also feel free to contribute
+
 
 > "No more controller provider needed. Got my wife back. Love this" - George, Alabama.
 
