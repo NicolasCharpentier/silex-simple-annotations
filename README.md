@@ -1,12 +1,11 @@
 # silex-simple-annotations
 
 ## When is the last night you dreamed of annotations for every controller route ?
-Silex-simple-annotations allows you to get ride of controller providers and have it done your(our) way.
+Silex Simple Annotations allows you to get ride of controller providers and have it done your(our) way.
 
 Prepand your controller function with annotations, we will deal with the rest. 
 
 ```php
-
     /**
      * @Route /login 
      * @Method POST
@@ -21,19 +20,41 @@ Prepand your controller function with annotations, we will deal with the rest.
 
 This examples links a `POST` on `baseUrl/SomeControllerPrefixRouteYouGave/login` to the `loginRegisterAction` action
 
+## Why should I use this provider ?
+
+Currently there are 2 cools providers Google gave me
+
+https://github.com/danadesrosiers/silex-annotation-provider
+
+https://github.com/dcousineau/orlex
+
+They both use Doctrine\Annotations to parse Annots and seem to work.
+
+So why?
+* You hate Doctrine (strange)
+* You want a simple syntax
+* You are lazy and just want to provide your /src for controllers
+* You may need an automatic documentation. *This will come in the future*
+
+Why not?
+* These other providers are probably faster for parsing
+* I'm french
+
 ## What can i do ? Is this FREE ? 
 
 ### Registering
-You just have to [...]
 
-//TODO : Register sur packages - composer
+First, add this to your composer.json dependencies
+```json
+"require": {
+    "other/packages...": "...",
+    "nicolascharpentier/silex-simple-annotations": "dev-master"
+  },
+```
 
-When registering services into your app, add this one 
-
-// TODO : Changer le path post new 
-
+Then in the registering-services-part of your project, add these lines
 ```php
-$app->register(new OriginalNamespace\AnnotationsServiceProvider(), array(
+$app->register(new SilexSimpleAnnotations\AnnotationsServiceProvider(), array(
     'simpleAnnots.controllersPath' => __DIR__ . '/../src/Controller',
     'simpleAnnots.recursiv' => true, // Optional, default to false
 ));
@@ -65,8 +86,22 @@ class UserController {
 
         return $app->json();
     }
+    
+    /**
+     * @Route /stalk/{id}
+     * @Bind user.stalkhim
+     */
+    public function stalkAction(Application $app, $id)
+    {
+        AbstractUserManager::disconnectCurrentUser($app);
+
+        return $app->json();
+    }
 ```
-  This will mean a `GET` on `/user/logout` will call this action, which will be binded to `user.logout`
+  This will mean
+- a `GET` on `/user/logout` will call the `logoutAction`, which will be binded to `user.logout`
+- a `GET` on `/user/stalk/1` will call the `stalkAction`, with `$id === '1'` and the bind on `user.stalkhim`
+  
   
 3. Test and enjoy!! 
   
@@ -75,31 +110,17 @@ class UserController {
 **Controller Level**
 * *REQUIRED*  **Prefix** : Set the route prefix for every actions, also will be used for the default binding value. 
 
-// TODO : Continuer 
 **Actions Level**
-* *REQUIRED*  **Route**
-* *OPTIONAL*  **Method**
-* *OPTIONAL*  **Bind**
+* *REQUIRED*  **Route** : Set the Route suffix
+* *OPTIONAL*  **Method** : Sets the Route Method. Default to GET
+* *OPTIONAL*  **Bind** : Sets the Route binding. Default to ctrlPrefix + actionName
 
-## Why should I use this provider ?
+## TODOS
+- Get why the ordered list on this README just displays '1' at every step.
+- Support multiple methods for a Route
+- Start implementing the automated documentation
 
-Currently there are 2 cools providers Google gave me
-
-https://github.com/danadesrosiers/silex-annotation-provider
-
-https://github.com/dcousineau/orlex
-
-They both use Doctrine\Annotations to parse Annots and seem to work.
-
-So why?
-* You hate Doctrine (strange)
-* You want a simple syntax
-* You are lazy and just want to provide your /src for controllers
-* You may need an automatic documentation. *This will come in the futur*
-
-Why not?
-* These other providers are probably faster for parsing
-* Im french
+Ps: Cant work on this all next week long (4-10 jan), will still check for issues.
 
 ## Feedback & Contribution
 
