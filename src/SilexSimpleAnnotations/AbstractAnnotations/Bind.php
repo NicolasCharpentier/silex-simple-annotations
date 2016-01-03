@@ -1,22 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nico
- * Date: 02/01/2016
- * Time: 17:44
- */
 
-namespace OriginalNamespace\AbstractAnnotations;
+namespace SilexSimpleAnnotations\AbstractAnnotations;
 
 
-use OriginalNamespace\AbstractAnnotation;
+use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Bind extends AbstractAnnotation {
 
     public function __construct()
     {
         parent::construct(
-            \OriginalNamespace\OPT_NO_VAL, 'Bind'
+            \SilexSimpleAnnotations\OPT_NO_VAL, 'Bind'
         );
     }
 

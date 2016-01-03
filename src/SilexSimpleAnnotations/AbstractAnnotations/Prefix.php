@@ -1,16 +1,16 @@
 <?php
 
-namespace OriginalNamespace\AbstractAnnotations;
+namespace SilexSimpleAnnotations\AbstractAnnotations;
 
 
-use OriginalNamespace\AbstractAnnotation;
+use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Prefix extends AbstractAnnotation {
 
     public function __construct()
     {
         parent::construct(
-            \OriginalNamespace\REQUIRED, 'Prefix', null, true
+            \SilexSimpleAnnotations\REQUIRED, 'Prefix', null, true
         );
     }
 

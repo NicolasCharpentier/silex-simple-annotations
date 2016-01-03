@@ -1,22 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nico
- * Date: 02/01/2016
- * Time: 13:18
- */
 
-namespace OriginalNamespace\AbstractAnnotations;
+namespace SilexSimpleAnnotations\AbstractAnnotations;
 
 
-use OriginalNamespace\AbstractAnnotation;
+use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Method extends AbstractAnnotation{
 
     public function __construct()
     {
         parent::construct(
-            \OriginalNamespace\OPT_DEF_VAL, 'Method', 'GET'
+            \SilexSimpleAnnotations\OPT_DEF_VAL, 'Method', 'GET'
         );
     }
 

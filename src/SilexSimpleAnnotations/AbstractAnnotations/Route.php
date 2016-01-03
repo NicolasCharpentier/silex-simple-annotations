@@ -1,22 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nico
- * Date: 02/01/2016
- * Time: 13:15
- */
 
-namespace OriginalNamespace\AbstractAnnotations;
+namespace SilexSimpleAnnotations\AbstractAnnotations;
 
 
-use OriginalNamespace\AbstractAnnotation;
+use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Route extends AbstractAnnotation {
 
     public function __construct()
     {
         parent::construct(
-            \OriginalNamespace\REQUIRED, 'Route'
+            \SilexSimpleAnnotations\REQUIRED, 'Route'
         );
     }
 

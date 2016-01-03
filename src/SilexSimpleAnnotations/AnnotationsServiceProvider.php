@@ -1,8 +1,8 @@
 <?php
 
-namespace  OriginalNamespace;
+namespace  SilexSimpleAnnotations;
 
-use OriginalNamespace\Parser;
+use SilexSimpleAnnotations\Parser;
 use Silex\Controller;
 use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
@@ -18,7 +18,7 @@ class AnnotationsServiceProvider implements ServiceProviderInterface, Controller
     private $Parser = null;
 
     // Because i will change this
-    private $providerKey = 'simpleAnnots';
+    private $providerKey  = 'simpleAnnots';
     private $providerName = 'Silex simple annotations';
 
     /**

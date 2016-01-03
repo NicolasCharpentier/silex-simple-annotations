@@ -1,6 +1,6 @@
 <?php
 
-namespace OriginalNamespace;
+namespace SilexSimpleAnnotations;
 
 const REQUIRED    = 0;
 const OPT_DEF_VAL = 1;

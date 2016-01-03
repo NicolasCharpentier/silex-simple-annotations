@@ -1,9 +1,9 @@
 <?php
 
-namespace OriginalNamespace;
+namespace SilexSimpleAnnotations;
 
-use OriginalNamespace\AbstractAnnotation;
-use OriginalNamespace\AbstractAnnotations as Annots;
+use SilexSimpleAnnotations\AbstractAnnotation;
+use SilexSimpleAnnotations\AbstractAnnotations as Annots;
 use Silex\Controller;
 use Silex\ControllerCollection;
 

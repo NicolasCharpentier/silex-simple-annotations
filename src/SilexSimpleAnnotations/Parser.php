@@ -1,8 +1,8 @@
 <?php
 
-namespace OriginalNamespace;
+namespace SilexSimpleAnnotations;
 
-use OriginalNamespace\Rules;
+use SilexSimpleAnnotations\Rules;
 
 class Parser {
 
@@ -12,7 +12,6 @@ class Parser {
      * @throws \Exception
      */
     public function __construct($controllersDirs, $youRoll = false) {
-        $youRoll = !! $youRoll; // in case string passed
 
         if (is_string($controllersDirs))
             $controllersDirs = [$controllersDirs];
@@ -34,13 +33,7 @@ class Parser {
     private $Rules;
 
     private $controllerAnnotations;
-    
 
-    public function debug()
-    {
-        file_put_contents('tlp.txt',
-            var_export($this->controllerAnnotations, true));
-    }
 
     public function parseEmAll()
     {
@@ -325,4 +318,12 @@ class Parser {
 
         return ($output and count($output) > 1) ? $output[1] : null;
     }
+
+    /*
+    public function debug()
+    {
+        file_put_contents('tlp.txt',
+            var_export($this->controllerAnnotations, true));
+    }
+    */
 }
