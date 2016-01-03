@@ -1,7 +1,7 @@
 # silex-simple-annotations
 
 ## When is the last night you dreamed of annotations for every controller route ?
-Silex-simple-annotations allows you to get ride of controller providers and have it done your(our) way.
+Silex Simple Annotations allows you to get ride of controller providers and have it done your(our) way.
 
 Prepand your controller function with annotations, we will deal with the rest. 
 
