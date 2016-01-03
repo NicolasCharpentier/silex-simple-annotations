@@ -2,7 +2,6 @@
 
 namespace SilexSimpleAnnotations\AbstractAnnotations;
 
-
 use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Method extends AbstractAnnotation{
