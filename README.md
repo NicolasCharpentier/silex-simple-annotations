@@ -77,7 +77,7 @@ class UserController {
 2. Pimp your actions
 ```php
     /**
-     * @Route /logoutnow
+     * @Route /logout
      */
     public function logoutAction(Application $app)
     {
