@@ -106,17 +106,32 @@ Loop the following for each controller you want to be annotation-equiped.
   
 ## Available annotations
 
-**Controller Level**
-* *REQUIRED*  **Prefix** : Set the route prefix for every actions, also will be used for the default binding value. 
+* **Controller Level**
+  * **Prefix** *REQUIRED*
+  * Sets the route prefix for every actions, also will be used for the default binding value. 
+  * *eg.* /user
 
-**Actions Level**
-* *REQUIRED*  **Route** : Set the Route suffix
-* *OPTIONAL*  **Method** : Sets the Route Method. Default to GET
-* *OPTIONAL*  **Bind** : Sets the Route binding. Default to ctrlPrefix + actionName
+* **Actions Level**
+  * **Route**  *REQUIRED* 
+  * Sets the Route suffix.
+  * *eg.* /edit/{id}
+  * **Bind**  *OPTIONAL*
+  * Sets the Route binding.
+  * Default to Prefix + '.' + actionName (`str_replace($function_name, 'Action', '')`)
+  * *eg.* user.edit
+  * **Method**  *OPTIONAL*
+  * Sets the request method.
+  * Default to GET
+  * Value(s) accepted GET POST PUT OPTIONS DELETE
+  * *eg.* POST PUT
 
 ## TODOS
 - ~~Get why the ordered list on this README just displays '1' at every step.~~
-- Support multiple methods for a Route
+- ~~Support multiple methods for a Route~~
+- Reorganize the parsing part
+- Modify the Rules class to be more self explanable
+- Generalize annotations usage when building Controllers
+- Implement a cache system
 - Start implementing the automated documentation
 
 Ps: Cant work on this all next week long (4-10 jan), will still check for issues.
