@@ -67,15 +67,15 @@ Parameters start with **simpleAnnots** and end with:
 Loop the following for each controller you want to be annotation-equiped.
 
 1. Give a prefix for the controller (which will be prepend for every action route)
-```php
-/**
- * @Prefix /user
- */
-class UserController {
-```
+    ```php
+    /**
+     * @Prefix /user
+     */
+    class UserController {
+    ```
 
 2. Pimp your actions
-```php
+    ```php
     /**
      * @Route /logout
      */
@@ -96,10 +96,10 @@ class UserController {
 
         return $app->json();
     }
-```
-  This will mean
-- a `GET` on `/user/logout` will call the `logoutAction`, which will be binded to `user.logout`
-- a `GET` on `/user/stalk/1` will call the `stalkAction`, with `$id === '1'` and the bind on `user.stalkhim`
+    ```
+    This will mean
+    - a `GET` on `/user/logout` will call the `logoutAction`, which will be binded to `user.logout`
+    - a `GET` on `/user/stalk/1` will call the `stalkAction`, with `$id === '1'` and the bind on `user.stalkhim`
   
   
 3. Test and enjoy!! 
@@ -115,7 +115,7 @@ class UserController {
 * *OPTIONAL*  **Bind** : Sets the Route binding. Default to ctrlPrefix + actionName
 
 ## TODOS
-- Get why the ordered list on this README just displays '1' at every step.
+- ~~Get why the ordered list on this README just displays '1' at every step.~~
 - Support multiple methods for a Route
 - Start implementing the automated documentation
 
