@@ -1,9 +1,9 @@
 # silex-simple-annotations
 
-## When is the last night you dreamed of annotations for every controller route ?
-Silex Simple Annotations allows you to get ride of controller providers and have it done your(our) way.
+## When is the last time you dreamed of annotations for every controller route?
+Silex Simple Annotations allows you to get rid of controller providers and have it done your(our) way.
 
-Prepand your controller function with annotations, we will deal with the rest. 
+Prepend your controller function with annotations. We will deal with the rest. 
 
 ```php
     /**
@@ -20,27 +20,26 @@ Prepand your controller function with annotations, we will deal with the rest.
 
 This examples links a `POST` on `baseUrl/SomeControllerPrefixRouteYouGave/login` to the `loginRegisterAction` action
 
-## Why should I use this provider ?
+## Why should I use this provider?
 
-Currently there are 2 cools providers Google gave me
+Currently, there seem to be only 2 providers after a quick Google search
 
-https://github.com/danadesrosiers/silex-annotation-provider
+* https://github.com/danadesrosiers/silex-annotation-provider
+* https://github.com/dcousineau/orlex
 
-https://github.com/dcousineau/orlex
-
-They both use Doctrine\Annotations to parse Annots and seem to work.
+They both use `Doctrine\Annotations` to parse annotations and seem to work.
 
 So why?
 * You hate Doctrine (strange)
 * You want a simple syntax
-* You are lazy and just want to provide your /src for controllers
+* You are lazy and just want to provide your `/src` for controllers
 * You may need an automatic documentation. *This will come in the future*
 
 Why not?
 * These other providers are probably faster for parsing
 * I'm french
 
-## What can i do ? Is this FREE ? 
+## What can i do? Is this FREE? 
 
 ### Registering
 
@@ -52,7 +51,7 @@ First, add this to your composer.json dependencies
   },
 ```
 
-Then in the registering-services-part of your project, add these lines
+Then register the following service provider wherever you do so for your project:
 ```php
 $app->register(new SilexSimpleAnnotations\AnnotationsServiceProvider(), array(
     'simpleAnnots.controllersPath' => __DIR__ . '/../src/Controller',
