@@ -3,6 +3,7 @@
 namespace SilexSimpleAnnotations\AbstractAnnotations;
 
 
+use Silex\Controller;
 use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Bind extends AbstractAnnotation {
@@ -14,13 +15,18 @@ class Bind extends AbstractAnnotation {
         );
     }
 
+    static public function buildRoute(Controller $route, $value, $ctrlPrefix, $actionName)
+    {
+        $route->bind(self::forUsage($value, $ctrlPrefix, $actionName));
+    }
+
     public function isValidValue($val)
     {
         // TODO : Regex for any char and '.'
         return true;
     }
 
-    static public function forUsage($val, $ctrlPrefix, $actionName) {
+    static private function forUsage($val, $ctrlPrefix, $actionName) {
         if ($val !== null)
             return $val;
 

@@ -55,27 +55,12 @@ class Rules {
     static public function connectController(ControllerCollection $ctrlsFactory, $controllerArray)
     {
         $ctrlAccessPath = $controllerArray['Namespace'] . '\\' . $controllerArray['Name'] . '::';
-        $prefix = $controllerArray['Prefix'];
 
         foreach ($controllerArray['Actions'] as $_action) {
 
-            $method = Annots\Method::forUsage($_action['Method']);
-            $route  = $prefix . $_action['Route'];
-            $action = $_action['Name'];
-            $binded = Annots\Bind::forUsage($_action['Bind'], $prefix, $_action['Name']);
-
-            /** @var Controller $routeFactored */
-            $routeFactored = $ctrlsFactory
-                ->match($route, $ctrlAccessPath . $action)
-                ->bind($binded)
-                ->method($method)
-            ;
-
-            // TODO : proposer le assert en annot
-            //if (strpos($route, '{id}') !== false)
-            //    $routeFactored->assert('id', "\d+");
-
-
+            $route = Annots\Route::buildRoute($ctrlsFactory, $_action['Route'], $controllerArray['Prefix'], $ctrlAccessPath, $_action['Name']);
+            Annots\Method::buildRoute($route, $_action['Method']);
+            Annots\Bind::buildRoute($route, $_action['Bind'], $controllerArray['Prefix'], $_action['Name']);
         }
     }
 

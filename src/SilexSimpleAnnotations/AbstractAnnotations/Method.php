@@ -2,6 +2,8 @@
 
 namespace SilexSimpleAnnotations\AbstractAnnotations;
 
+use Silex\Controller;
+use Silex\Route;
 use SilexSimpleAnnotations\AbstractAnnotation;
 
 class Method extends AbstractAnnotation{
@@ -11,6 +13,11 @@ class Method extends AbstractAnnotation{
         parent::construct(
             \SilexSimpleAnnotations\OPT_DEF_VAL, 'Method', 'GET'
         );
+    }
+
+    static public function buildRoute(Controller $route, $value)
+    {
+        $route->method(self::forUsage($value));
     }
 
     public function isValidValue($val)
@@ -26,7 +33,7 @@ class Method extends AbstractAnnotation{
         return !! $methodCount;
     }
 
-    static public function forUsage($val) {
+    static private function forUsage($val) {
         $val = strtoupper($val);
         $methods = '';
 
