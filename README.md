@@ -128,13 +128,12 @@ Loop the following for each controller you want to be annotation-equiped.
 ## TODOS
 - ~~Get why the ordered list on this README just displays '1' at every step.~~
 - ~~Support multiple methods for a Route~~
-- Reorganize the parsing part
 - Modify the Rules class to be more self explanable
 - Generalize annotations usage when building Controllers
 - Implement a cache system
 - Start implementing the automated documentation
 
-Ps: Cant work on this all next week long (4-10 jan), will still check for issues.
+Ps: Not working on this at the moment, still checking for issues.
 
 ## Feedback & Contribution
 
