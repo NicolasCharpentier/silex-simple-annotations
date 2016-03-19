@@ -73,7 +73,7 @@ class Parser {
             $this->Rules->getCtrlAnnotations(), $comments, $filePath
         );
 
-        if (preg_match("/class\s*(\w*)./", $declaration, $output) === false
+        if (preg_match("/class\s*(\w*)/", $declaration, $output) === false
             or ! $output or count($output) != 2) {
             return null;
         }
