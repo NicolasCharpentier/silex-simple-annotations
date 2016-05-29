@@ -1,7 +1,7 @@
 # silex-simple-annotations
 
 ## Warning
-Not recommanded for production, as it has no cache, and the project is unfinished.
+Not recommanded for production, as it has no cache, and the project is unfinished (but working).
 
 
 ## When is the last time you dreamed of annotations for every controller route?
