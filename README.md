@@ -1,5 +1,9 @@
 # silex-simple-annotations
 
+## Warning
+Not recommanded for production, has it have no cache, and the project is unfinished.
+
+
 ## When is the last time you dreamed of annotations for every controller route?
 Silex Simple Annotations allows you to get rid of controller providers and have it done your(our) way.
 
