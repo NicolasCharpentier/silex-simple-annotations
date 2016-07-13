@@ -68,8 +68,9 @@ class AnnotationsServiceProvider implements ServiceProviderInterface, Controller
     {
         $routesFactory = $app['controllers_factory'];
 
-        if ($this->controllers === null)
-            return $routesFactory;
+        if (0 == count($this->controllers)) {
+            return $routesFactory;   
+        }
 
         foreach ($this->controllers as $controller) {
             Rules::connectController($routesFactory, $controller);

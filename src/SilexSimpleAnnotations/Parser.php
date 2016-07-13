@@ -21,6 +21,7 @@ class Parser {
 
         $this->Rules = new Rules();
         $this->controllerFiles = array();
+        $this->controllerAnnotations = array();
         $this->registerDemControllers($controllersDirs, $youRoll);
     }
 
