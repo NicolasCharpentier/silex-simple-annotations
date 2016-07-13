@@ -11,7 +11,7 @@ Prepend your controller function with annotations. We will deal with the rest.
 
 ```php
     /**
-     * @Route /login 
+     * @Path /login 
      * @Method POST
      * @Bind user.login
      */
@@ -59,7 +59,8 @@ Then register the following service provider wherever you do so for your project
 ```php
 $app->register(new SilexSimpleAnnotations\AnnotationsServiceProvider(), array(
     'simpleAnnots.controllersPath' => __DIR__ . '/../src/Controller',
-    'simpleAnnots.recursiv' => true, // Optional, default to false
+    'simpleAnnots.recursiv' => false, // Optional, default to false,
+    'simpleAnnots.controllersAsApplicationAwareServices' => false // Optional, default to false. Will instanciate controllers with $app as services
 ));
 ```
 Parameters start with **simpleAnnots** and end with:
@@ -81,7 +82,7 @@ Loop the following for each controller you want to be annotation-equiped.
 2. Pimp your actions
     ```php
     /**
-     * @Route /logout
+     * @Path /logout
      */
     public function logoutAction(Application $app)
     {
@@ -91,7 +92,7 @@ Loop the following for each controller you want to be annotation-equiped.
     }
     
     /**
-     * @Route /stalk/{id}
+     * @Path /stalk/{id}
      * @Bind user.stalkhim
      */
     public function stalkAction(Application $app, $id)
@@ -116,7 +117,7 @@ Loop the following for each controller you want to be annotation-equiped.
   * *eg.* /user
 
 * **Actions Level**
-  * **Route**  *REQUIRED* 
+  * **Path**  *REQUIRED* 
   * Sets the Route suffix.
   * *eg.* /edit/{id}
   * **Bind**  *OPTIONAL*
