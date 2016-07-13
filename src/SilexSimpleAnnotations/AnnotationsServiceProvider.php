@@ -16,10 +16,12 @@ class AnnotationsServiceProvider implements ServiceProviderInterface, Controller
 
     private $controllers = null;
     private $Parser = null;
+    
+    // not documented. Will inject your controllers as service into the app, and they'll be instanciated with Application $app
+    private $controllersAsApplicationAwareService = false;
 
-    // Because i will change this
-    private $providerKey  = 'simpleAnnots';
-    private $providerName = 'Silex simple annotations';
+    const PROVIDER_KEY  = 'simpleAnnots';
+    const PROVIDER_NAME = 'Silex simple annotations';
 
     /**
      * Registers services on the given app.
@@ -29,7 +31,8 @@ class AnnotationsServiceProvider implements ServiceProviderInterface, Controller
      */
     public function register(Application $app)
     {
-        $app[$this->providerKey . '.recursiv'] = false;
+        $app[self::PROVIDER_KEY . '.recursiv'] = false;
+        $app[self::PROVIDER_KEY . '.controllersAsApplicationAwareServices'] = false;
 
         return $this;
     }
@@ -43,14 +46,16 @@ class AnnotationsServiceProvider implements ServiceProviderInterface, Controller
      */
     public function boot(Application $app)
     {
-        if (! isset($app[$this->providerKey . '.controllersPath'])) {
-            throw new \Exception($this->providerName . ': Please configure ' . $this->providerKey . '.controllersPath');
+        if (! isset($app[self::PROVIDER_KEY . '.controllersPath'])) {
+            throw new \Exception(self::PROVIDER_NAME . ': Please configure ' . self::PROVIDER_KEY . '.controllersPath');
         }
 
         $this->Parser       = new Parser(
-            $app[$this->providerKey . '.controllersPath'],
-            $app[$this->providerKey . '.recursiv']
+            $app[self::PROVIDER_KEY . '.controllersPath'],
+            $app[self::PROVIDER_KEY . '.recursiv']
         );
+        
+        $this->controllersAsApplicationAwareService = $app[self::PROVIDER_KEY . '.controllersAsApplicationAwareServices'];
 
         $this->controllers  = $this->Parser->parseEmAll()->getParsedControllers();
 
@@ -73,6 +78,18 @@ class AnnotationsServiceProvider implements ServiceProviderInterface, Controller
         }
 
         foreach ($this->controllers as $controller) {
+            if ($this->controllersAsApplicationAwareService) {
+                $controller['Access'] = 'controller.' . $controller['Namespace'] . '.' . $controller['Name'];
+
+                $controllerClass = $controller['Namespace'] . '\\' . $controller['Name'];
+
+                $app[$controller['Access']] = $app->share(function () use ($app, $controllerClass) {
+                      return new $controllerClass($app);
+                });
+            } else {
+                $controller['Access'] = $controller['Namespace'] . '\\' . $controller['Name'] . ':';
+            }
+            
             Rules::connectController($routesFactory, $controller);
         }
 

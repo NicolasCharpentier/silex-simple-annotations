@@ -54,11 +54,10 @@ class Rules {
 
     static public function connectController(ControllerCollection $ctrlsFactory, $controllerArray)
     {
-        $ctrlAccessPath = $controllerArray['Namespace'] . '\\' . $controllerArray['Name'] . '::';
+        $ctrlAccessPath = $controllerArray['Access'] . ':';
 
         foreach ($controllerArray['Actions'] as $_action) {
-
-            $route = Annots\Route::buildRoute($ctrlsFactory, $_action['Route'], $controllerArray['Prefix'], $ctrlAccessPath, $_action['Name']);
+            $route = Annots\Route::buildRoute($ctrlsFactory, $_action['Path'], $controllerArray['Prefix'], $ctrlAccessPath, $_action['Name']);
             Annots\Method::buildRoute($route, $_action['Method']);
             Annots\Bind::buildRoute($route, $_action['Bind'], $controllerArray['Prefix'], $_action['Name']);
         }

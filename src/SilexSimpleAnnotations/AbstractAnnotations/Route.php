@@ -11,7 +11,7 @@ class Route extends AbstractAnnotation {
     public function __construct()
     {
         parent::construct(
-            \SilexSimpleAnnotations\REQUIRED, 'Route'
+            \SilexSimpleAnnotations\REQUIRED, 'Path'
         );
     }
 
