@@ -74,7 +74,13 @@ class Rules {
         //TO DO: create specific exception?
         foreach ($errorsArray as $errorInfo) {
             $excStr .= 'Annotation ' . self::getVendorAnnotationShortCut() .
-                $errorInfo['annot'] . ': ' . $errorInfo['err'] . PHP_EOL;
+                $errorInfo['annot'] . ': ' . $errorInfo['err'];
+            
+            if ('Path' === $errorInfo['annot']) {
+                $excStr .= ' (@Route has been changed for @Path for PHPStorm compatiblity reasons)';
+            }
+            
+            $excStr .= PHP_EOL;
         }
 
         throw new \Exception(substr($excStr, 0, -1));
